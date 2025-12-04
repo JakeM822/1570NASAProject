@@ -1,0 +1,56 @@
+.browse-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filters select {
+  padding: 6px;
+  font-size: 14px;
+}
+
+.results-count {
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.asteroid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 15px;
+}
+
+.asteroid-card {
+  background: #111;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.asteroid-card h3 {
+  margin-top: 0;
+}
+
+.hazard {
+  color: #ff5252;
+  font-weight: bold;
+}
+
+.safe {
+  color: #5fff9b;
+  font-weight: bold;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}

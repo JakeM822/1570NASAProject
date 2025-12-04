@@ -12,7 +12,9 @@
 * **DATABASE**: MongoDB Atlas
 
 ## 🚀Setup
-* 
+
+  ```bash 
+  ```
 
 ## 🔮Future Improvements
 * 

@@ -30,19 +30,16 @@ Backend:
 
 ## REST API architecture
 
-Passport.js (GitHub OAuth + local strategy)
+* Passport.js (GitHub OAuth + local strategy)
+* express-session + MongoStore
 
-express-session + MongoStore
+Database:
 
-Database
+* MongoDB Atlas
+* Mongoose ODM
 
-MongoDB Atlas
-
-Mongoose ODM
-
-External APIs
-
-NASA NeoWs API (Asteroid Feed, Browse, and Detail endpoints)
+External APIs:
+* NASA NeoWs API (Asteroid Feed, Browse, and Detail endpoints)
 
 #🚀 Setup Instructions
 ```bash

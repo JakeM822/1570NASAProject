@@ -6,7 +6,6 @@ import FloatingAsteroids from "../components/FloatingAsteroids";
 export default function Browse() {
   const [page, setPage] = useState(0);
   const [data, setData] = useState(null);
-
   // Filters
   const [orbitingBody, setOrbitingBody] = useState("all");
   const [hazard, setHazard] = useState("all");

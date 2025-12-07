@@ -80,7 +80,13 @@ router.get("/me", async (req, res) => {
   }
 
   const user = await User.findById(req.session.userId).lean();
-  return res.json({ user });
+  if (!user) return res.json({ user: null });
+
+  return res.json({
+    name: user.name,
+    email: user.email,
+    id: user._id
+  });
 });
 
 module.exports = router;

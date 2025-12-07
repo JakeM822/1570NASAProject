@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import "../styles/Auth.css";
 import { useNavigate } from "react-router-dom";
 
@@ -14,13 +14,10 @@ export default function Login() {
     setError("");
 
     try {
-      await axios.post(
-        "http://localhost:4000/api/auth/login",
-        { email, password },
-        { withCredentials: true }
-      );
+      await api.post("/auth/login", { email, password });
 
-      navigate("/profile");
+      // FIXED DESTINATION
+      navigate("/account");
     } catch (err) {
       setError(err.response?.data?.error || "Login failed.");
     }
@@ -38,36 +35,36 @@ export default function Login() {
       React.createElement(
         "form",
         { onSubmit: handleLogin },
-
-        React.createElement("input", {
-          type: "email",
-          placeholder: "Email Address",
-          value: email,
-          onChange: (e) => setEmail(e.target.value),
-          required: true,
-        }),
-
-        React.createElement("input", {
-          type: "password",
-          placeholder: "Enter Password",
-          value: password,
-          onChange: (e) => setPassword(e.target.value),
-          required: true,
-        }),
-
-        error
-          ? React.createElement(
-              "p",
-              { className: "error-text" },
-              error
-            )
-          : null,
-
-        React.createElement(
-          "button",
-          { className: "auth-btn", type: "submit" },
-          "Login"
-        )
+        [
+          React.createElement("input", {
+            key: "email",
+            type: "email",
+            placeholder: "Email Address",
+            value: email,
+            onChange: (e) => setEmail(e.target.value),
+            required: true,
+          }),
+          React.createElement("input", {
+            key: "password",
+            type: "password",
+            placeholder: "Enter Password",
+            value: password,
+            onChange: (e) => setPassword(e.target.value),
+            required: true,
+          }),
+          error
+            ? React.createElement(
+                "p",
+                { key: "err", className: "error-text" },
+                error
+              )
+            : null,
+          React.createElement(
+            "button",
+            { key: "loginbtn", className: "auth-btn", type: "submit" },
+            "Login"
+          )
+        ]
       ),
 
       React.createElement(

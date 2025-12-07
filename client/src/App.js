@@ -8,6 +8,7 @@ import Feed from "./pages/Feed";
 import Browse from "./pages/Browse";
 import Favorites from "./pages/Favorites";
 import Orbit from "./pages/Orbit";
+import Account from "./pages/Account";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/orbit" element={<Orbit />} /> 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/account" element={<Account />} />
 
           <Route
             path="/favorites"

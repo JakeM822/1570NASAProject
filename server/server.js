@@ -26,7 +26,14 @@ app.use(
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
       collectionName: "sessions",
+      touchAfter: 24 * 3600,
     }),
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7, 
+      httpOnly: true,
+      secure: false,     // ← REQUIRED FOR localhost
+      sameSite: "lax"    // ← REQUIRED for cross-port requests
+    },
   })
 );
 
@@ -38,7 +45,7 @@ app.use("/api/auth", require("./routes/authRoutes"));        // <-- email/passwo
 app.use("/api/auth", require("./routes/githubAuthRoutes"));  // <-- GitHub OAuth
 
 app.use("/api/asteroids", require("./routes/asteroidRoutes"));
-
+app.use("/user", require("./routes/userRoutes"));
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("Mongo error:", err));

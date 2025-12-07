@@ -12,8 +12,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const res = await api.get("/auth/me", { withCredentials: true });
-        setUser(res.data.user); // null if not logged in
+        const res = await api.get("http://localhost:4000/user/me", {
+          withCredentials: true,
+        });
+        setUser(res.data); // null if not logged in
       } catch (error) {
         console.error("Auth load error:", error);
         setUser(null);

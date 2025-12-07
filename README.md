@@ -1,4 +1,4 @@
-# 🔭 NASA API Asteroid Monitoring
+# 🔭☄️ NASA API Asteroid Monitoring
 Created by: Jake Medica, Nate Moser, Vishal Suthakar, Payton Lin
 
 Group Name: Saja Boys
@@ -28,7 +28,7 @@ Backend:
 * Node.js
 * Express.js
 
-## 📐 REST API architecture
+## 📐 REST API Architecture
 
 * Passport.js (GitHub OAuth + local strategy)
 * express-session + MongoStore

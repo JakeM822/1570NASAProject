@@ -1,0 +1,78 @@
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #070e1d, #02040a);
+  color: white;
+}
+
+.auth-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 16px;
+  width: 400px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 30px rgba(0, 150, 255, 0.2);
+}
+
+.auth-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.auth-btn:hover {
+  background: #0062cc;
+}
+
+.github-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #333;
+  color: white;
+  border-radius: 8px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.switch-text {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.switch-text span {
+  color: #4dafff;
+  cursor: pointer;
+}
+
+.error-text {
+  color: #ff5c5c;
+  text-align: center;
+  margin-top: -5px;
+}

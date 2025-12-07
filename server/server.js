@@ -1,16 +1,15 @@
-require("dotenv").config();              // 1. Load environment variables
+require("dotenv").config();
 
 const express = require("express");
 const session = require("express-session");
-const passport = require("./config/passport");
+const MongoStore = require("connect-mongo");
+const passport = require("passport");
+require("./config/passport")(passport);
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path");
 
-// 2. CREATE APP BEFORE USING IT
 const app = express();
 
-// 3. MIDDLEWARE
 app.use(cors({
   origin: "http://localhost:3000",
   credentials: true
@@ -18,29 +17,33 @@ app.use(cors({
 
 app.use(express.json());
 
-// 4. SESSION MIDDLEWARE
+// SESSION BEFORE PASSPORT
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "fallbacksecret",
+    secret: process.env.SESSION_SECRET || "superSecret123",
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      collectionName: "sessions",
+    }),
   })
 );
 
-// 5. PASSPORT INITIALIZATION
 app.use(passport.initialize());
 app.use(passport.session());
 
-// 6. CONNECT TO DATABASE
+// ROUTES
+app.use("/api/auth", require("./routes/authRoutes"));        // <-- email/password
+app.use("/api/auth", require("./routes/githubAuthRoutes"));  // <-- GitHub OAuth
+
+app.use("/api/asteroids", require("./routes/asteroidRoutes"));
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("Mongo error:", err));
 
-// 7. ROUTES
-app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/asteroids", require("./routes/asteroidRoutes"));
-
-// 8. START SERVER
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server running on http://localhost:${PORT}`)
+);

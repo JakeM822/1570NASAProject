@@ -1,34 +1,38 @@
 import React, { useEffect, useState } from "react";
 import api from "../api/axiosConfig";
+import { useAuth } from "../context/AuthContext";
+import { Navigate } from "react-router-dom";
 
-function Feed() {
+export default function Feed() {
+  const { user, loading } = useAuth();  // <-- FIXED
+
   const [asteroids, setAsteroids] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loadingFeed, setLoadingFeed] = useState(false);
 
-  // Fetch asteroids from backend
+  useEffect(() => {
+    loadAsteroids();
+  }, []);
+
   const loadAsteroids = async () => {
     try {
-      setLoading(true);
+      setLoadingFeed(true);
 
-      const today = "2024-01-01"; // DEFAULT START DATE
+      const today = "2024-01-01";
       const tomorrow = "2024-01-02";
 
       const res = await api.get("/asteroids/feed", {
         params: { start_date: today, end_date: tomorrow },
       });
 
-      // NASA feed response is weird: asteroids are in a date-keyed object
       const nearEarthObjects = res.data.near_earth_objects[today] || [];
-
       setAsteroids(nearEarthObjects);
-      setLoading(false);
     } catch (err) {
       console.error("Feed error:", err);
-      setLoading(false);
+    } finally {
+      setLoadingFeed(false);
     }
   };
 
-  // Add favorite
   const addFavorite = async (asteroid) => {
     try {
       await api.post("/asteroids/favorites", {
@@ -43,15 +47,22 @@ function Feed() {
     }
   };
 
-  useEffect(() => {
-    loadAsteroids();
-  }, []);
+  // ---------------------------
+  // FIX: Do not redirect until AuthContext is done loading
+  // ---------------------------
+  if (loading) {
+    return null; // or a loading screen
+  }
+
+  if (!user) {
+    return <Navigate to="/signup" replace />;
+  }
 
   return (
     <div>
       <h1 className="glow">Asteroid Feed</h1>
 
-      {loading && <p className="glow">Loading holographic data...</p>}
+      {loadingFeed && <p className="glow">Loading holographic data...</p>}
 
       {asteroids.map((a) => (
         <div key={a.id} className="holo-card">
@@ -67,5 +78,3 @@ function Feed() {
     </div>
   );
 }
-
-export default Feed;

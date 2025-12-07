@@ -1,25 +1,41 @@
-// server/models/User.js
 const mongoose = require("mongoose");
 
-const FavoriteAsteroidSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
-    asteroidId: { type: String, required: true },
-    name: String,
-    hazardous: Boolean
-  },
-  { _id: false }
-);
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+    passwordHash: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
 
-const UserSchema = new mongoose.Schema(
-  {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    passwordHash: { type: String, required: true },
-    role: { type: String, enum: ["user", "admin"], default: "user" },
-    favorites: [FavoriteAsteroidSchema]
+    // ⭐ FIX: ADD FAVORITES ARRAY HERE
+    favorites: [
+      {
+        asteroidId: { type: String, required: true },
+        name: { type: String, required: true },
+        hazardous: { type: Boolean, default: false },
+      },
+    ],
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", UserSchema, "login");
+const User = mongoose.model("User", userSchema, "login");
 
+module.exports = User;

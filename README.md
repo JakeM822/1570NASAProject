@@ -1,4 +1,4 @@
-# 🔭 NASA API Asteroid Monitoring
+## 🔭 NASA API Asteroid Monitoring
 Created by: Jake Medica, Nate Moser, Vishal Suthakar, Payton Lin
 
 Group Name: Saja Boys
@@ -51,7 +51,7 @@ External APIs
 
 NASA NeoWs API (Asteroid Feed, Browse, and Detail endpoints)
 
-🚀 Setup Instructions
+##🚀 Setup Instructions
 # Clone repository
 git clone <your-repo-url>
 

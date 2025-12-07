@@ -28,7 +28,7 @@ Backend:
 * Node.js
 * Express.js
 
-## REST API architecture
+## 📐 REST API architecture
 
 * Passport.js (GitHub OAuth + local strategy)
 * express-session + MongoStore
@@ -41,7 +41,7 @@ Database:
 External APIs:
 * NASA NeoWs API (Asteroid Feed, Browse, and Detail endpoints)
 
-#🚀 Setup Instructions
+## 🚀 Setup Instructions
 ```bash
 # Clone repository
 git clone <your-repo-url>

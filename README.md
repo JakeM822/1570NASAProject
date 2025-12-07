@@ -1,10 +1,10 @@
-## 🔭 NASA API Asteroid Monitoring
+# 🔭 NASA API Asteroid Monitoring
 Created by: Jake Medica, Nate Moser, Vishal Suthakar, Payton Lin
 
 Group Name: Saja Boys
 For University of Pittsburgh — INFSCI 1570 (Fall 2025)
 
-# 🗒️ Description
+## 🗒️ Description
 
 This web application retrieves live asteroid data from NASA’s Near-Earth Object Web Service (NeoWs) and presents it through an interactive dashboard. Users can:
 
@@ -20,7 +20,7 @@ Save favorite asteroids to their profile
 
 The system uses a full MERN-style architecture (MongoDB, Express, React, Node.js) and includes secure authentication and session management.
 
-# 🥞 Tech Stack
+## 🥞 Tech Stack
 Frontend
 
 React.js
@@ -35,7 +35,7 @@ Node.js
 
 Express.js
 
-# REST API architecture
+## REST API architecture
 
 Passport.js (GitHub OAuth + local strategy)
 
@@ -51,30 +51,30 @@ External APIs
 
 NASA NeoWs API (Asteroid Feed, Browse, and Detail endpoints)
 
-##🚀 Setup Instructions
-# Clone repository
+#🚀 Setup Instructions
+## Clone repository
 git clone <your-repo-url>
 
-# Install server dependencies
+## Install server dependencies
 cd server
 npm install
 
-# Install client dependencies
+## Install client dependencies
 cd ../client
 npm install
 
-# Create .env files (server/.env)
+## Create .env files (server/.env)
 MONGO_URI=your_mongo_atlas_uri
 SESSION_SECRET=your_secret_key
 NASA_API_KEY=your_nasa_key
 GITHUB_CLIENT_ID=your_id
 GITHUB_CLIENT_SECRET=your_secret
 
-# Start backend
+## Start backend
 cd server
 npm run dev
 
-# Start frontend
+## Start frontend
 cd ../client
 npm start
 

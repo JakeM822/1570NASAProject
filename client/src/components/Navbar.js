@@ -10,6 +10,7 @@ export default function Navbar() {
       <a href="/" className="glow">Feed</a>
       <a href="/browse">Browse</a>
       <a href="/favorites">Favorites</a>
+      <a href="/orbit">Orbit View</a>
       {!user && <a href="/login">Login</a>}
       {user && <button onClick={logout} className="cyber-btn">Logout</button>}
     </div>

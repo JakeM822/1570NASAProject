@@ -76,3 +76,9 @@ input {
   text-align: center;
   margin-top: -5px;
 }
+
+@media (max-width: 768px) {
+.auth-box {
+    width: 90%;
+  }
+}

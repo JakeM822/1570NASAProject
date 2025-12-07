@@ -54,3 +54,9 @@
   justify-content: center;
   gap: 10px;
 }
+
+@media (max-width: 768px) {
+  .asteroid-grid {
+    grid-template-columns: 1fr;
+  }
+}

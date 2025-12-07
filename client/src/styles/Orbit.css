@@ -1,0 +1,43 @@
+.orbit-page {
+  padding: 30px;
+  text-align: center;
+}
+
+.orbit-title {
+  font-size: 2.4rem;
+  color: #00eaff;
+  text-shadow: 0 0 18px #00eaff;
+  margin-bottom: 10px;
+}
+
+.orbit-loading {
+  color: #ccc;
+  margin-top: 20px;
+}
+
+.orbit-canvas-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.orbit-canvas {
+  border-radius: 18px;
+  border: 1px solid #00eaff55;
+  box-shadow: 0 0 35px rgba(0, 238, 255, 0.25);
+  background: radial-gradient(circle at center, #020814, #01020a);
+}
+
+.orbit-caption {
+  margin-top: 18px;
+  font-size: 0.95rem;
+  color: #b5c7ff;
+}
+
+/* mobile tweak */
+@media (max-width: 768px) {
+  .orbit-canvas {
+    width: 95vw;
+    height: auto;
+  }
+}

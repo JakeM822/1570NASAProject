@@ -10,22 +10,22 @@ export const AuthProvider = ({ children }) => {
 
   // Load user session on refresh or GitHub OAuth redirect
   useEffect(() => {
-    const loadUser = async () => {
-      try {
-        const res = await api.get("http://localhost:4000/user/me", {
-          withCredentials: true,
-        });
-        setUser(res.data); // null if not logged in
-      } catch (error) {
-        console.error("Auth load error:", error);
-        setUser(null);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const loadUser = async () => {
+    try {
+      const res = await api.get("/auth/me");
+      setUser(res.data.user);   // <-- FIXED
+    } catch (error) {
+      console.error("ME ERROR:", error);
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    loadUser();
-  }, []);
+  loadUser();
+}, []);
+
+
 
   // LOGIN (manual)
   const login = async (email, password) => {

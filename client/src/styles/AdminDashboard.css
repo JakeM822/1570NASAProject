@@ -1,0 +1,113 @@
+/* ===========================
+   ADMIN DASHBOARD GLOBAL
+=========================== */
+
+.admin-dashboard-container {
+  padding: 40px 20px;
+  color: #00eaff;
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+}
+
+.admin-title {
+  font-size: 42px;
+  margin-bottom: 25px;
+  color: #00eaff;
+  text-shadow: 0 0 15px rgba(0, 230, 255, 0.6);
+}
+
+/* ===========================
+   TABLE STYLING
+=========================== */
+
+.admin-table-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.admin-table {
+  border-collapse: collapse;
+  width: 90%;
+  max-width: 1100px;
+  background: rgba(0, 15, 30, 0.75);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+}
+
+.admin-table th {
+  background: rgba(0, 30, 50, 0.9);
+  padding: 14px;
+  font-size: 16px;
+  color: #00eaff;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  text-shadow: 0 0 6px rgba(0,255,255,0.4);
+}
+
+.admin-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  color: #cceeff;
+  font-size: 15px;
+}
+
+.admin-table tr:nth-child(even) {
+  background: rgba(0, 15, 30, 0.65);
+}
+
+.admin-table tr:hover {
+  background: rgba(0, 30, 40, 0.85);
+  transition: 0.2s ease-in-out;
+}
+
+/* ===========================
+   ACTION BUTTONS
+=========================== */
+
+.admin-btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  font-family: inherit;
+  transition: 0.25s;
+}
+
+/* Make Admin Button */
+.make-admin-btn {
+  background: #007bff;
+  color: white;
+  border: 1px solid #009dff;
+}
+
+.make-admin-btn:hover {
+  background: #0066d6;
+  box-shadow: 0 0 8px rgba(0, 150, 255, 0.6);
+}
+
+/* Demote Button */
+.demote-btn {
+  background: #ffaa00;
+  color: black;
+  border: 1px solid #ffcc66;
+}
+
+.demote-btn:hover {
+  background: #e09900;
+  box-shadow: 0 0 8px rgba(255, 180, 60, 0.6);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #c53030;
+  border: 1px solid #ff4d4d;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #9b1c1c;
+  box-shadow: 0 0 8px rgba(255, 80, 80, 0.7);
+}

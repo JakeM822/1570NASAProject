@@ -7,7 +7,7 @@ const passport = require("passport");
 require("./config/passport")(passport);
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+const path = require("path");
 const app = express();
 
 app.use(cors({
@@ -43,9 +43,10 @@ app.use(passport.session());
 // ROUTES
 app.use("/api/auth", require("./routes/authRoutes"));        // <-- email/password
 app.use("/api/auth", require("./routes/githubAuthRoutes"));  // <-- GitHub OAuth
-
 app.use("/api/asteroids", require("./routes/asteroidRoutes"));
-app.use("/user", require("./routes/userRoutes"));
+const adminRoutes = require(path.join(__dirname, "routes", "adminroutes.js"));
+app.use("/api/admin", adminRoutes);
+app.use("/api/user", require("./routes/userRoutes"));
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("Mongo error:", err));

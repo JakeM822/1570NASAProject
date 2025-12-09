@@ -10,6 +10,7 @@ import Favorites from "./pages/Favorites";
 import Orbit from "./pages/Orbit";
 import Account from "./pages/Account";
 import { AuthProvider } from "./context/AuthContext";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/admin" element={<AdminDashboard />} />
 
           <Route
             path="/favorites"

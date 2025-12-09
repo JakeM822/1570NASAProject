@@ -59,7 +59,16 @@ router.post("/login", async (req, res) => {
 
     req.session.userId = user._id;
 
-    return res.json({ message: "Login successful", user });
+    return res.json({
+      message: "Login successful",
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        createdAt: user.createdAt
+      }
+    });
   } catch (err) {
     console.error("Login error:", err);
     return res.status(500).json({ error: "Login failed." });
@@ -83,9 +92,13 @@ router.get("/me", async (req, res) => {
   if (!user) return res.json({ user: null });
 
   return res.json({
-    name: user.name,
+  user: {
+    id: user._id,
+    name: user.name || "",
     email: user.email,
-    id: user._id
+    role: user.role || "user",
+    createdAt: user.createdAt,
+    }
   });
 });
 

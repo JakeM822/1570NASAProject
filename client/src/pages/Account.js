@@ -7,13 +7,15 @@ export default function Account() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.get("http://localhost:4000/user/me")
-      .then(res => setUser(res.data))
-      .catch(err => {
-        console.log("ME ERROR:", err);
-        navigate("/login");
-      });
-  }, []);
+  api.get("/auth/me")
+    .then(res => {
+      setUser(res.data.user || res.data);
+    })
+    .catch(err => {
+      console.log("ME ERROR:", err);
+      navigate("/login");
+    });
+  }, []); 
 
   const handleLogout = () => {
     api.post("/auth/logout").then(() => navigate("/login"));

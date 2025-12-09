@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
 
 export default function Navbar() {
@@ -62,6 +63,10 @@ export default function Navbar() {
             className: "cyber-btn"
           },
           "Logout"
+        ),
+      user?.role === "admin" &&
+            React.createElement(
+              Link, { to: "/admin", className: "cyber-btn" }, "Admin"
         )
     ]
   );

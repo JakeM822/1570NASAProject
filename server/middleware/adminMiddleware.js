@@ -1,22 +1,23 @@
-// server/middleware/authMiddleware.js
+const User = require("../models/User");
 
-// Require user to be logged in
-function requireAuth(req, res, next) {
-  if (req.session && req.session.userId) {
-    return next();
+// Check that user is admin
+async function requireAdmin(req, res, next) {
+  try {
+    if (!req.session || !req.session.userId) {
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    const user = await User.findById(req.session.userId);
+
+    if (!user || user.role !== "admin") {
+      return res.status(403).json({ message: "Admin access required" });
+    }
+
+    next();
+  } catch (error) {
+    console.error("ADMIN MIDDLEWARE ERROR:", error);
+    return res.status(500).json({ message: "Server error verifying admin" });
   }
-  return res.status(401).json({ message: "Not authenticated" });
 }
 
-// Require admin role
-function requireAdmin(req, res, next) {
-  if (req.session && req.session.userRole === "admin") {
-    return next();
-  }
-  return res.status(403).json({ message: "Admin access required" });
-}
-
-module.exports = {
-  requireAuth,
-  requireAdmin
-};
+module.exports = { requireAdmin };

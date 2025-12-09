@@ -74,6 +74,3 @@ Once running:
 Frontend: http://localhost:3000
 
 Backend API: http://localhost:4000
-Frontend: http://localhost:3000
-
-Backend API: http://localhost:4000

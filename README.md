@@ -17,6 +17,7 @@ Users can:
 * Create accounts (email/password or GitHub OAuth)
 * Save favorite asteroids to their profile
 * The system uses a full MERN-style architecture (MongoDB, Express, React, Node.js) and includes secure authentication and session management.
+<img width="2023" height="780" alt="image" src="https://github.com/user-attachments/assets/c55ae8df-2bda-4547-b9e8-d37834efef97" />
 
 ## 🥞 Tech Stack
 Frontend:

@@ -1,9 +1,6 @@
 # 🔭☄️ NASA API Asteroid Monitoring
 Created by: 
-Jake Medica 4544413,
-Nate Moser
-Vishal Suthakar
-Payton Lin
+Jake Medica 4544413, Nate Moser, Vishal Suthakar, Payton Lin
 
 Group Name: Saja Boys
 
